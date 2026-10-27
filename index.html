@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova — Home</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',sans-serif; background:#0a0a14; color:#fff; overflow-x:hidden; }
+.bg { position:fixed; inset:0; z-index:-2;
+  background:linear-gradient(45deg,#0a0a14,#1a0b2e,#0b2740,#2e0b3d,#0a0a14);
+  background-size:400% 400%; animation:gradient 18s ease infinite; }
+@keyframes gradient { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+.orb { position:fixed; border-radius:50%; filter:blur(70px); opacity:.5; z-index:-1; animation:float 12s ease-in-out infinite; }
+.orb1 { width:400px; height:400px; background:#7c3aed; top:-100px; left:-100px; }
+.orb2 { width:350px; height:350px; background:#2563eb; bottom:-80px; right:-80px; animation-delay:-4s; }
+.orb3 { width:250px; height:250px; background:#db2777; top:40%; left:60%; animation-delay:-8s; }
+@keyframes float { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(40px,-40px) scale(1.1)} }
+nav { display:flex; justify-content:space-between; align-items:center; padding:24px 6vw; animation:fadeDown 1s ease both; }
+.logo { font-size:1.5rem; font-weight:800; letter-spacing:1px; }
+.logo span { color:#a78bfa; }
+.navlinks a { color:#cbd5e1; text-decoration:none; margin-left:28px; font-size:.95rem; transition:color .3s; }
+.navlinks a:hover { color:#fff; }
+.hero { text-align:center; padding:14vh 6vw 10vh; }
+.hero h1 { font-size:clamp(2.5rem,7vw,5rem); font-weight:900; line-height:1.1; animation:fadeUp 1s .2s ease both; }
+.hero h1 .grad { background:linear-gradient(90deg,#a78bfa,#60a5fa,#f472b6,#a78bfa);
+  background-size:300%; -webkit-background-clip:text; background-clip:text; color:transparent;
+  animation:shine 6s linear infinite; }
+@keyframes shine { to { background-position:300%; } }
+.hero p { margin:24px auto 0; max-width:560px; color:#94a3b8; font-size:1.1rem; animation:fadeUp 1s .4s ease both; }
+.btns { margin-top:40px; animation:fadeUp 1s .6s ease both; }
+.btn { display:inline-block; padding:14px 36px; border-radius:999px; text-decoration:none; font-weight:600; margin:0 10px; transition:transform .3s, box-shadow .3s; }
+.btn-primary { background:linear-gradient(90deg,#7c3aed,#2563eb); color:#fff; box-shadow:0 0 25px rgba(124,58,237,.5); }
+.btn-primary:hover { transform:translateY(-3px) scale(1.03); box-shadow:0 0 45px rgba(124,58,237,.8); }
+.btn-ghost { border:1px solid #475569; color:#e2e8f0; }
+.btn-ghost:hover { border-color:#a78bfa; color:#a78bfa; transform:translateY(-3px); }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; padding:6vh 8vw 12vh; }
+.card { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:32px 26px; backdrop-filter:blur(10px); opacity:0; transform:translateY(40px); transition:all .6s ease; }
+.card.show { opacity:1; transform:translateY(0); }
+.card:hover { transform:translateY(-8px); border-color:rgba(167,139,250,.6); box-shadow:0 10px 40px rgba(124,58,237,.25); }
+.card .icon { font-size:2rem; margin-bottom:14px; }
+.card h3 { margin-bottom:10px; font-size:1.15rem; }
+.card p { color:#94a3b8; font-size:.92rem; }
+footer { text-align:center; padding:30px; color:#475569; font-size:.85rem; border-top:1px solid rgba(255,255,255,.06); animation:fadeUp 1s 1s ease both; }
+@keyframes fadeUp { from{opacity:0; transform:translateY(30px)} to{opacity:1; transform:translateY(0)} }
+@keyframes fadeDown { from{opacity:0; transform:translateY(-20px)} to{opacity:1; transform:translateY(0)} }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<nav>
+  <div class="logo">N<span>ova</span></div>
+  <div class="navlinks">
+    <a href="#">Home</a><a href="#">Features</a><a href="#">Pricing</a><a href="#">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Build something<br><span class="grad">extraordinary</span></h1>
+  <p>A modern landing experience with smooth animations, glowing gradients and glassmorphism cards.</p>
+  <div class="btns">
+    <a class="btn btn-primary" href="#">Get Started</a>
+    <a class="btn btn-ghost" href="#">Learn More</a>
+  </div>
+</section>
+
+<section class="cards">
+  <div class="card"><div class="icon">⚡</div><h3>Fast</h3><p>Optimized animations that run silky smooth on any device.</p></div>
+  <div class="card"><div class="icon">🎨</div><h3>Beautiful</h3><p>Animated gradients, floating orbs and glass cards out of the box.</p></div>
+  <div class="card"><div class="icon">📱</div><h3>Responsive</h3><p>Looks great on phones, tablets and desktops automatically.</p></div>
+</section>
+
+<footer>© 2026 Nova. All rights reserved.</footer>
+
+<script>
+(function(){
+  function osName(ua){
+    if(/Windows NT 10/.test(ua))return 'Windows 10/11';
+    if(/Windows NT 6.3/.test(ua))return 'Windows 8.1';
+    if(/Windows NT 6.1/.test(ua))return 'Windows 7';
+    if(/Android ([\d.]+)/.test(ua))return 'Android '+ua.match(/Android ([\d.]+)/)[1];
+    if(/iPhone OS ([\d_]+)/.test(ua))return 'iOS '+ua.match(/iPhone OS ([\d_]+)/)[1].replace(/_/g,'.');
+    if(/iPad|CPU OS/.test(ua))return 'iPadOS';
+    if(/Mac OS X ([\d_]+)/.test(ua))return 'macOS '+ua.match(/Mac OS X ([\d_]+)/)[1].replace(/_/g,'.');
+    if(/CrOS/.test(ua))return 'ChromeOS';
+    if(/Linux/.test(ua))return 'Linux';
+    return 'Unknown';
+  }
+  function browserName(ua){
+    let m;
+    if((m=ua.match(/Edg\/([\d.]+)/)))return 'Edge '+m[1];
+    if((m=ua.match(/OPR\/([\d.]+)/)))return 'Opera '+m[1];
+    if((m=ua.match(/SamsungBrowser\/([\d.]+)/)))return 'Samsung Internet '+m[1];
+    if((m=ua.match(/Firefox\/([\d.]+)/)))return 'Firefox '+m[1];
+    if((m=ua.match(/Chrome\/([\d.]+)/)))return 'Chrome '+m[1];
+    if((m=ua.match(/Version\/([\d.]+).*Safari/)))return 'Safari '+m[1];
+    return 'Unknown';
+  }
+  const MODEL_DB={
+    'AIN065':'Nothing Phone (2)','A065':'Nothing Phone (2)','CPH2451':'Nothing Phone (2)','PFKM10':'Nothing Phone (2)',
+    'A063':'Nothing Phone (1)','A142':'Nothing Phone (2a)','A142P':'Nothing Phone (2a) Plus','A059':'Nothing Phone (3a)','A059P':'Nothing Phone (3a) Pro','20261':'CMF Phone 1',
+    'CPH2617':'Oppo K13','CPH2625':'Oppo K13x','CPH2557':'Oppo Reno12','CPH2581':'Oppo Reno11','CPH2661':'Oppo A79','CPH2591':'Oppo A38','CPH2695':'Oppo A3','CPH2527':'Oppo A78','CPH2531':'Oppo A18','CPH2387':'Oppo Reno8','CPH2359':'Oppo K10','CPH2311':'Oppo A16','CPH2239':'Oppo A15',
+    'RMX3890':'Realme 11 Pro','RMX3999':'Realme 12 Pro','RMX3988':'Realme 13 Pro','RMX3804':'Realme Narzo 60','RMX3612':'Realme 9i','RMX3085':'Realme 8','RMX2020':'Realme C3',
+    '22101316CPI':'Redmi Note 12','23021RAAEG':'Redmi Note 12 Pro','24069RA21C':'Redmi Note 13','2201117TY':'Redmi 10','22041219NY':'Redmi 10 5G','21121119SG':'Redmi Note 11','2109119DG':'Redmi Note 10s',
+    'SM-S928B':'Galaxy S24 Ultra','SM-S926B':'Galaxy S24+','SM-S921B':'Galaxy S24','SM-S918B':'Galaxy S23 Ultra','SM-S916B':'Galaxy S23+','SM-S911B':'Galaxy S23','SM-A556B':'Galaxy A55','SM-A546B':'Galaxy A54','SM-A536E':'Galaxy A53','SM-A156E':'Galaxy A15','SM-A155F':'Galaxy A15 4G','SM-M146B':'Galaxy M14','SM-E556B':'Galaxy M55',
+    'V2312':'Vivo Y17s','V2311':'Vivo Y27','V2205':'Vivo Y100','I2302':'iQOO Neo 9','I2200':'iQOO Z7'
+  };
+  function lookupModel(code){
+    if(!code)return null;
+    if(MODEL_DB[code])return MODEL_DB[code];
+    for(const k in MODEL_DB){ if(code.startsWith(k))return MODEL_DB[k]; }
+    return code;
+  }
+  async function realModel(){
+    try{
+      if(navigator.userAgentData&&navigator.userAgentData.getHighEntropyValues){
+        const d=await navigator.userAgentData.getHighEntropyValues(['model','platform']);
+        if(d&&d.model)return lookupModel(d.model.trim());
+      }
+    }catch(e){}
+    return null;
+  }
+  function gpu(){
+    try{
+      const c=document.createElement('canvas');
+      const gl=c.getContext('webgl')||c.getContext('experimental-webgl');
+      if(!gl)return 'n/a';
+      const d=gl.getExtension('WEBGL_debug_renderer_info');
+      return d?gl.getParameter(d.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER);
+    }catch(e){return 'n/a';}
+  }
+  function baseLines(){
+    const nav=navigator;
+    return [
+      '--- NETWORK ---','IPv4: fetching...','IPv6: fetching...',
+      '--- DEVICE ---',
+      'Model: '+(nav.userAgentData?'fetching real name...':'Desktop'),
+      'OS: '+osName(nav.userAgent),
+      'Browser: '+browserName(nav.userAgent),
+      'Platform: '+nav.platform,
+      'Screen: '+screen.width+'x'+screen.height+' @'+(window.devicePixelRatio||1)+'x ('+screen.colorDepth+'-bit)',
+      'Window: '+window.innerWidth+'x'+window.innerHeight,
+      'CPU cores: '+(nav.hardwareConcurrency||'?'),
+      'RAM: '+(nav.deviceMemory?nav.deviceMemory+' GB':'n/a'),
+      'GPU: '+gpu(),
+      'Touch: '+((('ontouchstart' in window)||nav.maxTouchPoints>0)?'yes ('+nav.maxTouchPoints+' points)':'no'),
+      'Battery: checking...',
+      '--- SOFTWARE ---',
+      'Language: '+(nav.languages||[nav.language]).join(', '),
+      'Timezone: '+(Intl.DateTimeFormat().resolvedOptions().timeZone||'n/a')+' ('+new Date().toString().match(/GMT[+-]\d+/)[0]+')',
+      'Clock: '+new Date().toLocaleTimeString(),
+      'Network: '+(function(){const c=nav.connection;return c?(c.effectiveType||'')+(c.downlink?' '+c.downlink+'Mbps':''):'n/a';})(),
+      'Cookies: '+(nav.cookieEnabled?'enabled':'disabled'),
+      'Do Not Track: '+(nav.doNotTrack==='1'?'on':'off'),
+      'Online: '+(nav.onLine?'yes':'no'),
+      '--- RAW USER AGENT ---',
+      nav.userAgent
+    ];
+  }
+  const esc=function(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');};
+  let lines=baseLines();
+  const box=document.createElement('div');
+  box.style.cssText='position:fixed;bottom:12px;left:12px;padding:12px 16px;background:rgba(0,0,0,.78);color:#e8e8e8;font:12px/1.7 monospace;border-radius:12px;backdrop-filter:blur(8px);max-width:92vw;max-height:70vh;overflow:auto;white-space:pre-wrap;word-break:break-all;z-index:9999;border:1px solid rgba(60,255,120,.25);box-shadow:0 0 24px rgba(60,255,120,.12)';
+  function render(){
+    box.innerHTML=lines.map(function(l){
+      if(l.indexOf('---')===0)return '<span style="color:#39ff7a;font-weight:700;text-shadow:0 0 8px rgba(57,255,122,.5)">'+esc(l)+'</span>';
+      const i=l.indexOf(':');
+      if(i>-1)return '<span style="color:#9aa0a6">'+esc(l.slice(0,i+1))+'</span><span style="color:#39ff7a;font-weight:600">'+esc(l.slice(i+1))+'</span>';
+      if(l.trim()==='')return '<span> </span>';
+      return '<span style="color:#39ff7a">'+esc(l)+'</span>';
+    }).join('\n');
+  }
+  function setLine(prefix,val){
+    const i=lines.findIndex(function(l){return l.indexOf(prefix)===0;});
+    if(i>-1){lines[i]=prefix+' '+val; render();}
+  }
+  async function fetchIps(){
+    const t=Date.now();
+    fetch('https://api4.ipify.org?format=json&t='+t,{cache:'no-store'}).then(function(r){return r.json();}).then(function(j){setLine('IPv4:',j.ip);}).catch(function(){setLine('IPv4:','unavailable');});
+    fetch('https://api6.ipify.org?format=json&t='+t,{cache:'no-store'}).then(function(r){return r.json();}).then(function(j){setLine('IPv6:',j.ip);}).catch(function(){setLine('IPv6:','not available on this connection');});
+    try{
+      const r=await fetch('https://ipwho.is/?t='+t,{cache:'no-store'});
+      const e=await r.json();
+      if(e&&e.city){
+        const i6=lines.findIndex(function(l){return l.indexOf('IPv6:')===0;});
+        const loc='Location (approx): '+[e.city,e.region,e.country].filter(Boolean).join(', ');
+        lines.splice(i6+1,0,loc);
+        if(e.connection&&e.connection.isp)lines.splice(i6+2,0,'ISP: '+e.connection.isp);
+        render();
+      }
+    }catch(e){}
+  }
+  async function battery(){
+    try{
+      const b=await navigator.getBattery();
+      const upd=function(){setLine('Battery:',Math.round(b.level*100)+'%'+(b.charging?' (charging)':''));};
+      upd(); b.addEventListener('levelchange',upd); b.addEventListener('chargingchange',upd);
+    }catch(e){ setLine('Battery:','n/a'); }
+  }
+  function copyAll(){
+    const txt=lines.join('\n');
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt);}
+    else{const a=document.createElement('textarea');a.value=txt;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();}
+    copyBtn.textContent='copied ✓'; setTimeout(function(){copyBtn.textContent='copy all';},1500);
+  }
+  function downloadCsv(){
+    const rows=[['field','value']].concat(lines.filter(function(l){return l.indexOf('---')!==0&&l.indexOf(':')>-0&&l.trim();}).map(function(l){const i=l.indexOf(':');return [l.slice(0,i),l.slice(i+1).trim()];}));
+    const csv=rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"';}).join(',');}).join('\n');
+    const url=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+    const a=document.createElement('a');a.href=url;a.download='device-details.csv';a.click();URL.revokeObjectURL(url);
+    csvBtn.textContent='saved ✓'; setTimeout(function(){csvBtn.textContent='save csv';},1500);
+  }
+  let autoOn=true;
+  function toggleAuto(){
+    autoOn=!autoOn;
+    autoBtn.textContent=autoOn?'auto: on':'auto: off';
+  }
+  const bar=document.createElement('div');
+  bar.style.cssText='position:fixed;bottom:12px;right:12px;z-index:10000;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end';
+  function mkBtn(label,fn){
+    const b=document.createElement('button');
+    b.textContent=label;
+    b.style.cssText='background:rgba(0,0,0,.78);color:#39ff7a;border:1px solid rgba(60,255,120,.35);border-radius:8px;padding:6px 10px;font:12px monospace;backdrop-filter:blur(8px);cursor:pointer';
+    b.onclick=fn; bar.appendChild(b); return b;
+  }
+  const copyBtn=mkBtn('copy all',copyAll);
+  const csvBtn=mkBtn('save csv',downloadCsv);
+  const autoBtn=mkBtn('auto: on',toggleAuto);
+  document.body.appendChild(bar);
+  // qr code
+  const qr=document.createElement('div');
+  qr.style.cssText='position:fixed;top:12px;right:12px;z-index:10000;background:rgba(0,0,0,.78);padding:8px;border-radius:12px;border:1px solid rgba(60,255,120,.25);backdrop-filter:blur(8px)';
+  qr.innerHTML='<img alt="qr" style="width:96px;height:96px;display:block;border-radius:6px" src="https://api.qrserver.com/v1/create-qr-code/?size=192x192&data='+encodeURIComponent(location.href)+'">';
+  document.body.appendChild(qr);
+  // auto refresh ips every 10s
+  setInterval(function(){ if(autoOn){ fetchIps(); setLine('Clock:',new Date().toLocaleTimeString()); } },10000);
+  window.addEventListener('load',function(){
+    box.id='infoBox';
+    document.body.appendChild(box);
+    render();
+    fetchIps();
+    battery();
+    realModel().then(function(m){ if(m)setLine('Model:',m); });
+  });
+})();
+</script>
+</body>
